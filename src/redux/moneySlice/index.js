@@ -16,15 +16,14 @@ const maxPiece = (items, indexx, totalMoney) => {
   });
 
   let maxcost = 100000000000 - otherTotalCost;
-  console.log("maxcost", maxcost);
+
   let maxpiece = maxcost / items[indexx].price;
-  console.log("maxpiece", parseInt(maxpiece));
+
   return parseInt(maxpiece);
 };
 
 const totalCost = (items) => {
   let Items = items.filter((item) => item.piece !== 0);
-  console.log("Items", Items);
 
   let itemsTotalCost = 0;
   let cost;
@@ -34,19 +33,11 @@ const totalCost = (items) => {
     return "";
   });
 
-  console.log("itemsTotalCost", itemsTotalCost);
-
   return 100000000000 - itemsTotalCost;
 };
 
 const receipts = (items) => {
   let Items = items.filter((item) => item.piece !== 0);
-  // let itemsTotalCost = 0;
-  // let cost;
-  // let totalCost = Items.map((item) => {
-  //   cost = item.piece * item.price;
-  //   itemsTotalCost += cost;
-  // });
 
   return Items;
 };
@@ -345,13 +336,12 @@ export const moneySlice = createSlice({
       let cost = totalCost(current(state.items));
       state.totalMoney = cost;
       state.receipt = receipts(state.items);
-      console.log("state receipt", state.receipt);
     },
     incItemPiece: (state, action) => {
       let index = action.payload.index;
       state.items[index].piece += 1;
       let maxpiece = maxPiece(current(state.items), index, state.totalMoney);
-      console.log("inc value", action.payload.value);
+
       if (maxpiece < state.items[index].piece) {
         state.items[index].piece = maxpiece;
       }
@@ -363,7 +353,7 @@ export const moneySlice = createSlice({
       let index = action.payload.index;
       if (state.items[index].piece !== 0) state.items[index].piece -= 1;
       let maxpiece = maxPiece(current(state.items), index, state.totalMoney);
-      console.log(action.payload.value);
+
       if (maxpiece < state.items[index].piece) {
         state.items[index].piece = maxpiece;
       }

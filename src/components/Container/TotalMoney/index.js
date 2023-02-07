@@ -18,15 +18,11 @@ function TotalMoney() {
         fontFamily: "Roboto,sans-serif",
       }}
     >
-      {/* ${numberWithCommas(totalMoney)} */}$
+      $
       {
         <AnimatedNumber
           component="text"
           value={parseInt(totalMoney)}
-          // style={{
-          //   transition: "0.8s ease-out",
-          // }}
-          // frameStyle={(perc) => (perc === 100 ? {} : {})}
           duration={2000}
           formatValue={(n) => numberWithCommas(parseInt(n))}
         />

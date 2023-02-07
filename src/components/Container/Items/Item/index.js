@@ -14,13 +14,6 @@ function Item(props) {
 
   let totalMoney = useSelector(selectTotalMoney);
 
-  // let displayChange = (param) => {
-  //   if (param > 0) {
-  //     return param.toString().replace(/^0+/, "");
-  //   }
-  //   return 0;
-  // };
-
   function displayChange(num) {
     num = num.toString();
     for (var i = 0; i < num.length; i++) {
@@ -34,8 +27,6 @@ function Item(props) {
 
   const dispatch = useDispatch();
 
-  // const itemMoney = useSelector(selectItemMoney);
-
   const handleKeyDown = (e) => {
     if (e.key === "." || e.key === "-" || e.key === "e" || e.key === ",") {
       e.preventDefault();
@@ -43,9 +34,6 @@ function Item(props) {
   };
 
   const handleChange = (e) => {
-    console.log("e.target.value:", e.target.value);
-    console.log("props.item.index", props.index);
-
     if (e.target.value === "") {
       dispatch(editItemPiece({ value: 0, index: props.index }));
     } else {
@@ -82,7 +70,6 @@ function Item(props) {
           }}
           onClick={() => {
             dispatch(decItemPiece({ index: props.index }));
-            console.log(props.item.piece);
           }}
           disabled={props.item.piece > 0 ? false : true}
         >

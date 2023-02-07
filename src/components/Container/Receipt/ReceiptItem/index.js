@@ -2,21 +2,7 @@ import React from "react";
 
 function ReceıptItem({ name, piece, cost, index }) {
   let k = cost / 1000;
-  console.log(k);
-  console.log("asdasd", cost / 1000000000);
-  // let costDisplay = (costt) => {
-  //   if (0 < costt < 1000) {
-  //     return cost;
-  //   } else if (1000 <= cost < 1000000) {
-  //     let copyy = costt / 1000;
-  //     console.log("copyy", copyy);
-  //     return copyy;
-  //   } else if (1000000 <= costt < 1000000000) {
-  //     return costt / 1000000;
-  //   } else if (1000000000 <= costt) {
-  //     return costt / 1000000000;
-  //   }
-  // };
+
   return (
     <div
       className="mx-auto text-center grid gap-y-2.5 text-lg"
